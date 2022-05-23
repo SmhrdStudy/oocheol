@@ -26,7 +26,7 @@ module.exports = {
         port: 80,
         clientLogLevel: 'silent',
         proxy: {
-            "**": "http://localhost:8080/"
+            "**": "http://localhost:8081/"
         }
     },
     optimization: {

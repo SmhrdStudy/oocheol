@@ -10,4 +10,5 @@ public class SqlTest {
                 .WHERE("a.emp_no=" + String.valueOf(memNo) + " AND a.menu_no=b.menu_no AND b.use_yn='y'")
                 .toString();
     }
+
 }
