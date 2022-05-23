@@ -29,30 +29,16 @@ public class HomeAct {
 
 	@RequestMapping("/")
 	public String home(Model model, InternCookie cookie){
-		if(StringUtils.isNotEmpty(cookie.getUserId())){
 
+		List<CodeObject.Code> data1 = commonCodeComponent.getCodeList("style_f");
+		model.addAttribute("data", data1);
+
+		for(CodeObject.Code c : data1){
+			log.error("{}",c);
 		}
-		model.addAttribute("data", commonCodeComponent.getCodeList("style_f"));
-		model.addAttribute("data2", commonCodeComponent.getCodeList("character_f"));
 
 		Map<String, CodeObject> data = commonCodeComponent.getAll();
 
-		log.error("***************************************");
-		List<TestVO> list = test.sqlMenu2("");
-		for(TestVO dt : list){
-			log.error("{}//{}", dt.getUserId(), dt.getUserName());
-		}
-		log.error("{}", list);
-		log.error("***************************************");
-
-		Iterator<String> keys = data.keySet().iterator();
-		while( keys.hasNext() ){
-			String key = keys.next();
-			log.error("key==>{}, list==>{}", key, data.get(key));
-			model.addAttribute(key, data.get(key).getCodeList());
-		}
-
-		log.error("{}",data);
 		return "index";
 	}
 

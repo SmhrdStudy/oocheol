@@ -2,6 +2,8 @@
 
 $(()=>{
 	new Sample();
+	console.log("test");
+	console.log("test");
 })
 
 export class Sample{

@@ -3,6 +3,7 @@ package com.smart.project.component;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.smart.project.component.data.CodeObject;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -17,7 +18,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 abstract class CodeComponent {
+
 
 	final Map<String, CodeObject> codeMap = new LinkedHashMap<>();
 	@Autowired ApplicationContext applicationContext;
@@ -26,6 +29,7 @@ abstract class CodeComponent {
 		String jsonFileName = jsonPath();
 		List<CodeObject> codeObjectList = getListFromJson(jsonFileName);
 		codeObjectList.forEach(data -> codeMap.put((data.getId()), data));
+		log.error("test");
 	}
 
 	private List<CodeObject> getListFromJson(String jsonPath) {

@@ -28,6 +28,8 @@
 
 
 </script>
-
+<section layout:fragment="contentScriptFragment">
+    <script type="text/javascript" th:src="${@versionComponent.getVersion('/resources/build/sample.bundle.js')}"></script>
+</section>
 </body>
 </html>
