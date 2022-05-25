@@ -9,6 +9,13 @@ $(()=>{
 export class Sample{
 	constructor() {
 		this.eventBind();
+		var template = require('art-template');
+		var html = template("test", {
+			user: {
+				name: 'aui'
+			}
+		});
+		document.getElementById('test').innerHTML = html;
 	}
 
 	eventBind(){
