@@ -14,6 +14,7 @@ module.exports = {
         ],
         sample: path.join(context, '/js/sample/sample.js'),
         join: path.join(context, '/js/join/join.js'),
+        join2: path.join(context, '/js/join/join2.js'),
     },
     devtool: 'eval',//inline-source-map, eval
     devServer: {
@@ -26,7 +27,7 @@ module.exports = {
         port: 80,
         clientLogLevel: 'silent',
         proxy: {
-            "**": "http://localhost:8081/"
+            "**": "http://localhost:8080/"
         }
     },
     optimization: {

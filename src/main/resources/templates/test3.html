@@ -11,15 +11,29 @@
     <link rel="stylesheet" type="text/css" href="../css/m_yby_member.css">
 </head>
 <div layout:fragment="content" class="pc__container">
-    <th:block th:each="row : ${data}">
-		<span th:text="${row.codeName}">
-		</span>
-    </th:block>
 
-    <th:block th:each="row2 : ${data2}">
-		<span th:text="${row2.getId()}"></span>
-        <span th:text="${row2.getNum()}"></span>
-    </th:block>
+    <table th:border="solid">
+        <th:block th:each="row : ${data}">
+            <tr>
+                <td><p th:text="${row.code}"></p></td>
+                <td><p th:text="${row.codeName}"></p></td>
+            </tr>
+        </th:block>
+    </table>
+
+    <table th:border="solid">
+        <th:block th:each="row2 : ${data2}">
+        <tr>
+            <td><p th:text="${row2.getNum()}"></p></td>
+            <td><p th:text="${row2.getId()}"></p></td>
+        </tr>
+        </th:block>
+    </table>
+
+    <p id="test1"></p>
+
+    <a id="test">버튼</a>
+
 </div>
 
 

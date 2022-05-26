@@ -1,5 +1,7 @@
 "use strict";
 
+import locTmpl from "@/join/loc.html";
+
 $(()=>{
 	new Sample();
 	console.log("test");
@@ -9,13 +11,7 @@ $(()=>{
 export class Sample{
 	constructor() {
 		this.eventBind();
-		var template = require('art-template');
-		var html = template("test", {
-			user: {
-				name: 'aui'
-			}
-		});
-		document.getElementById('test').innerHTML = html;
+
 	}
 
 	eventBind(){
@@ -28,6 +24,16 @@ export class Sample{
 			console.log('eeee')
 			console.log('eeeeddd')
 			console.log(e);
+		})
+
+		$('#test').on('click', (e)=>{
+			let art = require("sample.html")
+			console.log(art);
+
+			axios.post('/test4').then((result)=>{
+				$('#test1').append(art(result));
+				console.log(result);
+			})
 		})
 	}
 

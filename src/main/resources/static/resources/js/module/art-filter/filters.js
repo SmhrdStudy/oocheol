@@ -31,6 +31,7 @@ export class Filters {
             return moment(date).format(format)
         }
 
+
         this.runtime.default = function (data, param) {
             return data || param;
         }
