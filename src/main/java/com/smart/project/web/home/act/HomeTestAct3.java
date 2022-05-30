@@ -55,7 +55,8 @@ public class HomeTestAct3 {
     @ResponseBody
     public List<CodeObject.Code> test1(Model model, HttpServletResponse response) {
 
-        List<CodeObject.Code> data = commonCodeComponent.getCodeList("style_f");
+//        List<CodeObject.Code> data = commonCodeComponent.getCodeList("style_f");
+        List<CodeObject.Code> data = commonCodeComponent.getCodeList("wishLoc");
 //        model.addAttribute("data", data);
 
         return data;
