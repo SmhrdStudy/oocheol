@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/layoutContents.html}">
+<head>
+    <meta charset="utf-8">
+    <!--    thymeleaf layout dialect가 contents페이지의 head태그를 layout의 head태그에 자동으로 추가해준다. -->
+    <!--    필요힌 css, script 추가영역 -->
+    <link rel="stylesheet" type="text/css" href="../css/m_yby_member.css">
+</head>
+<div layout:fragment="content" class="pc__container">
+
+
+</div>
+
+
+<section layout:fragment="contentScriptFragment">
+
+    <script type="text/javascript" th:src="${@versionComponent.getVersion('/resources/build/sample.bundle.js')}"></script>
+</section>
