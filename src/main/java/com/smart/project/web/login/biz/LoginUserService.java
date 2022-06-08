@@ -23,7 +23,7 @@ public class LoginUserService {
 			c.setComment(name);
 			c.setPath("/");
 			c.setDomain(CONTEXT_DOMAIN);
-			//        c.setMaxAge(0);
+//			        c.setMaxAge(0);
 			res.addCookie(c);
 		}catch (Exception e){
 			log.error("{}", e);

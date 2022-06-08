@@ -9,5 +9,18 @@
         SELECT * FROM test;
     </select>
 
+    <insert id="joinComplete" parameterType="com.smart.project.web.home.vo.JoinVO">
+        INSERT INTO member
+        VALUES(#{id}, #{email}, #{pw},#{nick},#{gender},#{birth},#{locWantKey},#{wantLoc});
+    </insert>
+
+    <select id="memberFind" resultType="com.smart.project.web.home.vo.JoinVO">
+        SELECT * FROM member;
+    </select>
+
+    <select id="login" resultType="com.smart.project.web.home.vo.JoinVO" parameterType="com.smart.project.web.home.vo.JoinVO">
+        SELECT * FROM member
+        where id=#{id} and email=#{email} and pw=#{pw};
+    </select>
 
 </mapper>

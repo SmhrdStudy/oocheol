@@ -28,12 +28,13 @@
 				<img src="https://image.yeoboya.com/imgs/new_wedding/mobile/new_login/logo_yby2.png" alt="여보야 로고">
 				<p class="ment">해외 거주자나 동포 여러분도 가입 가능합니다.</p>
 			</div>
-			<form>
+<!--			<form action="/joinComplete" method="post">-->
+				<form action="/joinSuccess" method="post">
 				<div class="join_box">
 					<ul class="flex_container">
 						<li>
 							<div class="member_input">
-								<input type="email" class="input_txt" maxlength="30" placeholder="이메일">
+								<input type="text" name = "id" class="input_txt" maxlength="30" placeholder="이메일">
 								<label class="hidden">이메일 아이디 입력</label>
 								<a class="input_del blind"><span class="blind">지우기</span></a>
 							</div>
@@ -42,13 +43,13 @@
 						<li>
 							<div class="member_slct">
 								<label class="hidden">이메일 입력</label>
-								<select>
-									<option>naver.com</option>
-									<option>nate.com</option>
-									<option>daum.net</option>
-									<option>hanmail.net</option>
-									<option>gmail.com</option>
-									<option>직접입력</option>
+								<select name="email">
+									<option value="naver.com">naver.com</option>
+									<option value="nate.com">nate.com</option>
+									<option value="daum.net">daum.net</option>
+									<option value="hanmail.net">hanmail.net</option>
+									<option value="gamil.com">gmail.com</option>
+									<option value="">직접입력</option>
 								</select>
 							</div>
 							<div class="member_input hidden">
@@ -64,7 +65,7 @@
 				</div>
 				<div class="join_box password">
 					<div class="member_input">
-						<input type="password" class="input_txt" placeholder="비밀번호" maxlength="12">
+						<input type="password" name = "pw" class="input_txt" placeholder="비밀번호" maxlength="12">
 						<label class="hidden">비밀번호</label>
 						<a class="input_del blind"><span class="blind">지우기</span></a>
 					</div>
@@ -82,7 +83,7 @@
 					<ul class="flex_container">
 						<li>
 							<div class="member_input">
-								<input type="text" class="input_txt" placeholder="대화명">
+								<input type="text" name = "nick" class="input_txt" placeholder="대화명">
 								<label class="hidden">대화명</label>
 								<a class="input_del blind"><span class="blind">지우기</span></a>
 							</div>
@@ -90,11 +91,11 @@
 						<li>
 							<ul class="sex_slct">
 								<li class="slct_man">
-									<input type="radio" class="sex_input">
+									<input type="radio" class="sex_input" name="gender" value="man">
 									<label class="sex_lb"><span class="blind">남성</span></label>
 								</li>
 								<li class="slct_woman">
-									<input type="radio" class="sex_input">
+									<input type="radio" class="sex_input" name="gender" value="woman">
 									<label class="sex_lb"><span class="blind">여성</span></label>
 								</li>
 							</ul>
@@ -107,7 +108,7 @@
 						<li>
 							<div class="member_slct">
 								<label class="hidden">태어난 년도</label>
-								<select>
+								<select name="birth">
 									<option value="0000">태어난 년도</option> <!-- 20세 ~ 99세 -->
 									<option value="2002">2002</option>
 									<option value="2001">2001</option>
@@ -130,7 +131,7 @@
 				<div class="join_box">
 					<div class="btn_hope_area">
 						<a class="">배우자 희망지역</a>
-						<input type="hidden" id="wantLoc" name="wantLoc" value="g,f,h">
+						<input type="hidden" id="wantLoc" name="wantLoc">
 					</div>
 					<p class="join_txt error"></p>
 				</div>
@@ -142,7 +143,7 @@
 					<a class="btn_view_policy"><u>[보기]</u></a>
 				</div>
 				<div class="btn_member">
-					<a>가입완료</a>
+					<button>가입완료</button>
 				</div>
 				<p class="jn_msg">※ 한번가입으로 <span>PC 웹, 모바일 웹</span> 어디서나 사용이 가능합니다.</p>
 			</form>
@@ -154,98 +155,7 @@
 
 	<!--  지역 선택 모달 -->
 	<div class="normal_pop_wrap hidden" id="locTest">
-		<div class="full_modal"></div>
-		<div class="pop_region">
-			<div class="pop_region_hd">
-				<!-- 국내/해외 지역 미선택시 -->
-				<span id="addressTitle">지역 선택</span>
-				<!-- 국내 지역 선택시 -->
-				<!-- <span class="slct_city">광주</span>
-				<span class="slct_city_suf">상세지역을 선택하세요</span> -->
-				<div class="btn_cls"><a>닫기</a>
-				</div>
-			</div>
-			<div class="region_tab">
-				<ul class="flex_container">
-					<li><a class="slct_kr active"><span class="hidden">국내</span></a></li>
-					<li><a class="slct_abroad"><span class="hidden">해외</span></a></li>
-				</ul>
-			</div>
-			<!-- 국내 지역선택-->
-			<div class="pop_region_content region_content_kr">
-				<ul>
-					<!-- 지역 선택시 class="chk_active" 추가 -->
-					<li><a>서울</a></li>
-					<li><a>경기</a></li>
-					<li><a>인천</a></li>
-					<li><a>대전</a></li>
-					<li><a>대구</a></li>
-					<li><a>부산</a></li>
-					<li><a>광주</a></li>
-					<li><a>세종</a></li>
-					<li><a>울산</a></li>
-					<li><a>충북</a></li>
-					<li><a>충남</a></li>
-					<li><a>전북</a></li>
-					<li><a>전남</a></li>
-					<li><a>경북</a></li>
-					<li><a>경남</a></li>
-					<li><a>강원</a></li>
-					<li><a>제주</a></li>
-					<li><a>북한</a></li>
-				</ul>
-			</div>
-			<!-- 국내 상세 지역 선택 -->
-			<div class="pop_region_content region_content_kr_detail hidden">
-				<ul>
-					<li><a>광산구</a></li>
-					<li><a>남구</a></li>
-					<li><a>동구</a></li>
-					<li><a>북구</a></li>
-					<li><a>서구</a></li>
-				</ul>
-			</div>
-			<!-- 해외 지역선택 -->
-			<div class="pop_region_content region_content_abroad hidden">
-				<ul>
-					<li><a>중국</a></li>
-					<li><a>미국</a></li>
-					<li><a>일본</a></li>
-					<li><a>캐나다</a></li>
-					<li><a>호주</a></li>
-					<li><a>홍콩</a></li>
-					<li><a>베트남</a></li>
-					<li><a>뉴질랜드</a></li>
-					<li><a>대만</a></li>
-					<li><a>브라질</a></li>
-					<li><a>미얀마</a></li>
-					<li><a>필리핀</a></li>
-					<li><a>영국</a></li>
-					<li><a>독일</a></li>
-					<li><a>가나</a></li>
-					<li><a>가봉</a></li>
-					<li><a>가이아나</a></li>
-					<li><a>감비아</a></li>
-					<li><a>과델로프</a></li>
-					<li><a>과테말라</a></li>
-					<li><a>괌</a></li>
-					<li><a>교황청</a></li>
-					<li><a>그레나다</a></li>
-					<li><a>그루지아</a></li>
-				</ul>
-			</div>
-			<div class="botom_btn">
-				<div class="btn_half btn_prev" style="display:none;"
-				><a>이전</a>
-				</div>
-				<!-- 국내/해외 지역 선택시 class="active" 추가-->
-				<div class="btn_full btn_slct">
-					<a>선택</a>
-				</div>
-			</div>
-		</div>
 	</div>
-
 	<!-- 배우자 희망지역 모달 -->
 	<div class="normal_pop_wrap want_loc hidden">
 	</div>
