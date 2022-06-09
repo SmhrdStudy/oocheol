@@ -27,7 +27,7 @@ public interface Test {
 
 	List<JoinVO> memberFind();
 
-	JoinVO login(JoinVO vo);
+	List<JoinVO> login(JoinVO vo);
 
 
 }
