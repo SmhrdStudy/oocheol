@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table th:border="solid">
+    <thead>
+    <tr>
+        <td><p>Id</p></td>
+        <td><p>Email</p></td>
+        <td><p>Pw</p></td>
+        <td><p>Nick</p></td>
+        <td><p>Gender</p></td>
+        <td><p>Birth</p></td>
+        <td><p>LocWantKey</p></td>
+        <td><p>WantLoc</p></td>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><p th:text="${login.getId()}"></p></td>
+            <td><p th:text="${login.getEmail()}"></p></td>
+            <td><p th:text="${login.getPw()}"></p></td>
+            <td><p th:text="${login.getNick()}"></p></td>
+            <td><p th:text="${login.getGender()}"></p></td>
+            <td><p th:text="${login.getBirth()}"></p></td>
+            <td><p th:text="${login.getLocWantKey()}"></p></td>
+            <td><p th:text="${login.getWantLoc()}"></p></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

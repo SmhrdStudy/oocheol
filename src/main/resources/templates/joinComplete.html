@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table th:border="solid">
+    <thead>
+    <tr>
+        <td><p>Index</p></td>
+        <td><p>Id</p></td>
+        <td><p>Email</p></td>
+        <td><p>Pw</p></td>
+        <td><p>Nick</p></td>
+        <td><p>Gender</p></td>
+        <td><p>Birth</p></td>
+        <td><p>LocWantKey</p></td>
+        <td><p>WantLoc</p></td>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="row, index : ${member}">
+        <tr>
+            <td><p th:text="${index.index}"></p></td>
+            <td><p th:text="${row.getId()}"></p></td>
+            <td><p th:text="${row.getEmail()}"></p></td>
+            <td><p th:text="${row.getPw()}"></p></td>
+            <td><p th:text="${row.getNick()}"></p></td>
+            <td><p th:text="${row.getGender()}"></p></td>
+            <td><p th:text="${row.getBirth()}"></p></td>
+            <td><p th:text="${row.getLocWantKey()}"></p></td>
+            <td><p th:text="${row.getWantLoc()}"></p></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>
