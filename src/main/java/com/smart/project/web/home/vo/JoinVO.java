@@ -1,15 +1,17 @@
 package com.smart.project.web.home.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class JoinVO {
+    @NonNull
     String id;
+    @NonNull
     String email;
+    @NonNull
     String pw;
     String nick;
     String gender;

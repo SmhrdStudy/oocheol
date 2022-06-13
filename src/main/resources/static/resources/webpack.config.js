@@ -15,6 +15,7 @@ module.exports = {
         sample: path.join(context, '/js/sample/sample.js'),
         join: path.join(context, '/js/join/join.js'),
         join2: path.join(context, '/js/join/join2.js'),
+        login: path.join(context, '/js/login/login.js'),
     },
     devtool: 'eval',//inline-source-map, eval
     devServer: {

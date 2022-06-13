@@ -565,9 +565,10 @@ public class ClientUtil extends ClientUtilParent {
 	public static Map<String, String> getCurrentCookie(HttpServletRequest request) throws Exception{
 		Map<String, String> resultMap = new HashMap<String, String>();
 		List<String> cookieKeylist = new ArrayList<>();
-		cookieKeylist.add("USER_ID");
-		cookieKeylist.add("NAME");
-		cookieKeylist.add("EMP_NO");
+		cookieKeylist.add("id");
+//		cookieKeylist.add("USER_ID");
+//		cookieKeylist.add("NAME");
+//		cookieKeylist.add("EMP_NO");
 		try {
 			Cookie[] cookies = request.getCookies();
 			for (int i = 0; i < cookies.length; i++) {

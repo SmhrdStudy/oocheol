@@ -81,6 +81,7 @@ public class MvcConfig implements WebMvcConfigurer {
                 // excludePathPatterns 묶어서 가독성 신경점..
                 .excludePathPatterns(
                         /* 멤버 */
+                        "/member/**",
                         "/member/login/**",
                         /* 정적 자원 */
                         "/favicon**",

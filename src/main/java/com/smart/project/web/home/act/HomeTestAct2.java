@@ -40,26 +40,6 @@ public class HomeTestAct2 {
 
 
 
-
-//            List<CodeObject.Code> data1 = commonCodeComponent.getCodeList("style_f");
-//            model.addAttribute("data", data1);
-//
-//            for(CodeObject.Code c : data1){
-//                log.error("{}",c);
-//            }
-
-
-
-            /*log.error("agent===");
-            log.error("***************************************");
-            List<StudyTestVO> list = test.sqlFind();
-            for (StudyTestVO dt : list) {
-                log.error("{}//{}", dt.getNum(), dt.getId());
-            }
-            log.error("{}", list);
-            log.error("***************************************");*/
-
-
             return "test2";
         }
 }

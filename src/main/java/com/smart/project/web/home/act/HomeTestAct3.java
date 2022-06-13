@@ -3,24 +3,16 @@ package com.smart.project.web.home.act;
 import com.smart.project.component.CommonCodeComponent;
 import com.smart.project.component.data.CodeObject;
 import com.smart.project.proc.Test;
+import com.smart.project.util.CookieUtil;
 import com.smart.project.web.home.vo.JoinVO;
-import com.smart.project.web.home.vo.StudyTestVO;
-import com.smart.project.web.home.vo.TestVO;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.Session;
-import org.apache.catalina.connector.Request;
-import org.apache.catalina.connector.Response;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.boot.autoconfigure.cassandra.CassandraProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.Filter;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -153,6 +145,7 @@ public class HomeTestAct3 {
 
     @RequestMapping("/joinComplete")
     public void joinComplete(@ModelAttribute JoinVO vo, Model model, HttpServletResponse response) throws IOException {
+
         response.setContentType("text/html;charset=UTF-8");
         int cnt = test.joinComplete(vo);
         PrintWriter out = response.getWriter();
@@ -196,24 +189,26 @@ public class HomeTestAct3 {
     }
 
     @RequestMapping("/loginComplete")
-    public void loginComplete(@ModelAttribute JoinVO vo,
-                              HttpServletRequest request,
-                              HttpServletResponse response) throws IOException {
-        response.setContentType("text/html;charset=UTF-8");
+    public String loginComplete(JoinVO vo, HttpServletRequest request, HttpServletResponse response) {
 
+
+        log.error("test" + vo.getId());
         HttpSession session = request.getSession();
-        PrintWriter out = response.getWriter();
         List<JoinVO> result = test.login(vo);
 
-        if (result.size() > 0) {
-            session.setAttribute("login", result.get(0));
-//            log.error(result.get(0).getBirth());
+        log.error("loginComplete");
 
-            out.println("<script>alert('로그인 성공!'); location.href='/main';</script>");
+        if (result.size() > 0) {
+            CookieUtil.createCookie(response, "id", vo.getId());
+
+            session.setAttribute("login", result.get(0));
+            log.error("로그인 성공");
+            return "redirect:/main";
+
         } else {
-            out.println("<script>alert('로그인 실패!'); location.href='/login';</script>");
+            log.error("로그인 실패");
+            return "redirect:/login";
         }
-        out.flush();
     }
 
 
@@ -262,6 +257,14 @@ public class HomeTestAct3 {
 
         return "redirect:/main";
     }
+
+    @RequestMapping("/cookieDelete")
+    public String cookieDelete(HttpServletRequest request, HttpServletResponse response){
+
+        CookieUtil.deleteCookie(request, response, "id");
+
+        return "redirect:/login";}
+
 
 
 

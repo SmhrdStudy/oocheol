@@ -21,11 +21,12 @@ public class CookieAutoLoginFilter implements HandlerInterceptor {
 
     // 무조건 로그인이 되어 있어야 접근 가능한 경로 중 예외 경로
     final static String[] COERCION_ACCESS_URLS = {
+        "/login", "/join"
     };
 
     // 무조건 로그인이 되어 있어야 접근 가능한 경로
     final static String[] ONLY_LOGIN_ACCESS_URLS = {
-
+        "/main"
     };
 
     private double preTime = 0.0;
@@ -52,7 +53,8 @@ public class CookieAutoLoginFilter implements HandlerInterceptor {
         log.error("preHandle===>{}", request.getRequestURI());
         if(!checkUrlPermission(request, response)){
             String protocol = request.isSecure() ? "https://" : "http://";
-            response.sendRedirect(protocol + request.getServerName() + "/member/login/index");
+//            response.sendRedirect(protocol + request.getServerName() + "/member/login/index");
+            response.sendRedirect(protocol + request.getServerName() + "/login");
             return false;
         }
         return HandlerInterceptor.super.preHandle(request, response, handler);
@@ -84,9 +86,14 @@ public class CookieAutoLoginFilter implements HandlerInterceptor {
         try {
             boolean isLogin = checkLogin(request);
             String accessUrl = request.getRequestURI();
+            log.error(accessUrl);
+            log.error("check");
 
             //* 접근 제한 링크
             if(!checkNoLoginAccess(accessUrl)) {
+                if (isLogin){
+                    return true;
+                }
                 //로그인 전용페이지
                 log.info("This session is logout status... : " + request.getRemoteAddr() + " : No Accessable Url : "+accessUrl);
                 return false;
@@ -105,11 +112,16 @@ public class CookieAutoLoginFilter implements HandlerInterceptor {
      * @return
      */
     private boolean checkLogin(HttpServletRequest request){
+        log.error("checklogin");
         try {
             Map<String, String> cookieMap = ClientUtil.getCurrentCookie(request);
-            String USER_ID = cookieMap.get("USER_ID");
+            String id = cookieMap.get("id");
+//            cookieMap.get()
+            log.error("check"+id);
+//            String USER_ID = cookieMap.get("USER_ID");
 
-            return (StringUtils.isNotEmpty(USER_ID));
+//            return (StringUtils.isNotEmpty(USER_ID));
+            return (StringUtils.isNotEmpty(id));
         }catch(Exception e){
             log.info("checkLogin Exception...."+ e.getMessage());
             return false;

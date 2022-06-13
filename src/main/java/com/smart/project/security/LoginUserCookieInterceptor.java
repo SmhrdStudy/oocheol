@@ -15,6 +15,7 @@ import java.util.Map;
 public class LoginUserCookieInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+
         try {
 
             Map<String, String> currentCookie = getCurrentCookie(request);
@@ -24,16 +25,16 @@ public class LoginUserCookieInterceptor implements HandlerInterceptor {
                     return true;
                 } else {
                     String protocol = request.isSecure() ? "https://" : "http://";
-                    response.sendRedirect(protocol + request.getServerName() + "/login");
+                    response.sendRedirect(protocol + request.getServerName() + "/member/login");
                 }
             } else {
                 String protocol = request.isSecure() ? "https://" : "http://";
-                response.sendRedirect(protocol + request.getServerName() + "/login");
+                response.sendRedirect(protocol + request.getServerName() + "/member/login");
             }
         } catch (Exception e) {
             try {
                 String protocol = request.isSecure() ? "https://" : "http://";
-                response.sendRedirect(protocol + request.getServerName() + "/login");
+                response.sendRedirect(protocol + request.getServerName() + "/member/login");
             } catch(Exception ee) {
                 return false;
             }
