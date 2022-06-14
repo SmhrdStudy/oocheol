@@ -235,7 +235,6 @@ public class HomeTestAct3 {
                 log.error("test3 " + vo);
                 model.addAttribute("login", vo);
                 return "forward:/sessionTest1";
-
             } else {
                 out.println("<script>alert('로그인이 필요합니다!'); location.href='/login';</script>");
                 return "/login";

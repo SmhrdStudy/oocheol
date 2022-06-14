@@ -1,6 +1,7 @@
 package com.smart.project.config;
 
 import com.smart.project.filter.CookieAutoLoginFilter;
+import com.smart.project.filter.FilterTest;
 import com.smart.project.security.InternCookieResolver;
 import com.smart.project.security.LoginUserCookieInterceptor;
 import org.apache.catalina.Context;
@@ -9,6 +10,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.embedded.tomcat.TomcatContextCustomizer;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +21,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.mobile.device.DeviceHandlerMethodArgumentResolver;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 
 import java.text.SimpleDateFormat;
@@ -68,6 +71,21 @@ public class MvcConfig implements WebMvcConfigurer {
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         // Do any additional configuration here
         return builder.build();
+    }
+
+    @Bean
+    public FilterRegistrationBean firstFilterRegister() {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new FilterTest());
+        return registrationBean;
+    }
+
+    @Bean
+    public MultipartResolver multipartResolver() {
+        org.springframework.web.multipart.commons.CommonsMultipartResolver multipartResolver
+                = new org.springframework.web.multipart.commons.CommonsMultipartResolver();
+
+        multipartResolver.setMaxUploadSize(10485760); // 1024 * 1024 * 10
+        return multipartResolver;
     }
 
     @Bean

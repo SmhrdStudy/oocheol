@@ -23,6 +23,7 @@ public class ErrorRedirectAction implements ErrorController {
     @RequestMapping(value = "/error")
     public String handleNoHandlerFoundException(HttpServletResponse response, HttpServletRequest request) {
         HttpStatus status = HttpStatus.valueOf(response.getStatus());
+        log.error("status==>{}",status);
         if (status == HttpStatus.NOT_FOUND) {
             return redirectionView(request, "404");
         } else if (status == HttpStatus.UNAUTHORIZED) {
