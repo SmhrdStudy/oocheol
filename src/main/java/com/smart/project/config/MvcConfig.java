@@ -33,11 +33,15 @@ import java.util.List;
 public class MvcConfig implements WebMvcConfigurer {
 
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {"classpath:/static/"};
+    private String connectPath = "/image/**";
+    private String resourcePath = "file:///C:/tmp/";
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
                 .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
+        registry.addResourceHandler(connectPath)
+                .addResourceLocations(resourcePath);
     }
 
     @Override
@@ -96,6 +100,7 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(cookieFilter())
                 .addPathPatterns("/**")
+                .addPathPatterns("/image")
                 // excludePathPatterns 묶어서 가독성 신경점..
                 .excludePathPatterns(
                         /* 멤버 */

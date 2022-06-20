@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<table>-->
+<!--  <img th:src='@{/image/{id}/original.jpg(id=${id})}'>-->
+<!--  <img th:src='@{/image/{id}/resize(100x200).jpg(id=${id})}'>-->
+<!--  <img th:src='@{/image/{id}/resize(300x400).jpg(id=${id})}'>-->
+<!--  <img th:src='@{/image/{id}/resize(600x800).jpg(id=${id})}'>-->
+<!--</table>-->
+
+<table th:border="solid">
+    <tr>
+        <td th:width="300px"><h1>구분</h1></td>
+        <td><h1>사진</h1><a href="/main">메인페이지</a></td>
+    </tr>
+    <tr>
+        <td><h1>원본</h1></td>
+        <td><img th:src='@{/image/{id}/original.jpg(id=${id})}'></td>
+    </tr>
+    <tr>
+        <td><h1>200 x 200</h1></td>
+        <td><img th:src='@{/image/{id}/resize(200x200).jpg(id=${id})}'></td>
+    </tr>
+    <tr>
+        <td><h1>300 x 400</h1></td>
+        <td><img th:src='@{/image/{id}/resize(300x400).jpg(id=${id})}'></td>
+    </tr>
+    <tr>
+        <td><h1>600 x 800</h1></td>
+        <td><img th:src='@{/image/{id}/resize(600x800).jpg(id=${id})}'></td>
+    </tr>
+    <tr>
+        <td><h1>900 x 1200</h1></td>
+        <td><img th:src='@{/image/{id}/resize(900x1200).jpg(id=${id})}'></td>
+    </tr>
+
+</table>
+<!--  <img src="/image/dd/3.jpg">-->
+<!--  <span th:text="${id}"></span>-->
+<!--  <img src="/image/dd/resize(200x100).jpg">-->
+<!--  <img src="/image/dd/resize(400x300).jpg">-->
+<!--  <img src="/image/dd/resize(800x600).jpg">-->
+
+
+</body>
+</html>

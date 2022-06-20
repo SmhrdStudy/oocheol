@@ -26,7 +26,7 @@ public class CookieAutoLoginFilter implements HandlerInterceptor {
 
     // 무조건 로그인이 되어 있어야 접근 가능한 경로
     final static String[] ONLY_LOGIN_ACCESS_URLS = {
-        "/main"
+        "/main", "/image"
     };
 
     private double preTime = 0.0;
