@@ -5,12 +5,6 @@ import com.smart.project.util.CookieUtil;
 import com.smart.project.util.ImageUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.IOUtils;
-import org.apache.tomcat.jni.Buffer;
-import org.apache.tomcat.jni.FileInfo;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -59,12 +53,8 @@ public class PhotoAct {
         }else {
             log.error("이미 폴더 존재");
         }
-//        BufferedImage outputimage = ImageUtil.resize(is,600,800);
-//        File outputfile = new File("/tmp/"+"save.jpg");
-//        ImageIO.write(outputimage, "jpg", outputfile);
-//
-//            log.error("image==>{}", outputimage);
 
+        // 원본 저장
         try(
                 FileOutputStream fos = new FileOutputStream(path + "original.jpg");
                 InputStream is = file.getInputStream();
@@ -84,6 +74,7 @@ public class PhotoAct {
             throw new RuntimeException("file Save Error");
         }
 
+        // 변환 이미지 저장(4개)
         for (int i=0; i<4;i++){
         try(
 //                FileOutputStream fos = new FileOutputStream(path + file.getOriginalFilename());
@@ -97,15 +88,13 @@ public class PhotoAct {
             throw new RuntimeException("file Save Error");
         }
         }
-
-
         return "redirect:/main";
     }
 
     @RequestMapping("/photo")
     public void photo(){
-
     }
+
     @RequestMapping("/show")
     public void show(Model model, HttpServletRequest request) throws Exception {
         Map<String, String> cookieMap = ClientUtil.getCurrentCookie(request);
@@ -114,6 +103,19 @@ public class PhotoAct {
         model.addAttribute("id", id);
 
     }
+
+//    @RequestMapping("/seq")
+//    public void seq(){
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//        String securePassword = encoder.encode("testtest");
+//
+//        log.error("encoding==>{}", securePassword);
+//
+//        boolean test = encoder.matches("testtest","testtest");
+//        log.error("encoding==>{}", test);
+//
+//    }
+
 
 
 }
