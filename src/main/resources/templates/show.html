@@ -23,7 +23,8 @@
     </tr>
     <tr>
         <td><h1>200 x 200</h1></td>
-        <td><img th:src='@{/image/{id}/resize(200x200).jpg(id=${id})}'></td>
+        <td><img th:src='@{/image/{id}/resize(200x200).jpg(id=${id})}'>
+        <a th:href='@{/image/{id}/resize(200x200).jpg(id=${id})}' download="">다운</a> </td>
     </tr>
     <tr>
         <td><h1>300 x 400</h1></td>
