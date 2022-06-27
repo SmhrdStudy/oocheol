@@ -38,7 +38,7 @@ public class PhotoAct {
 
         Map<String, String> cookieMap = ClientUtil.getCurrentCookie(request);
         String id = cookieMap.get("id");
-        String path = "/tmp/" + id + "/";
+        String path = "/tmp/" + id + "/"; // 경로설정
         File Folder = new File(path);
 
         if (!Folder.exists()) {
